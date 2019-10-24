@@ -4,7 +4,6 @@ package lesson2.task1
 
 import lesson1.task1.discriminant
 import lesson1.task1.sqr
-import javax.tools.Diagnostic
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -111,17 +110,17 @@ fun timeForHalfWay(
     t2: Double, v2: Double,
     t3: Double, v3: Double
 ): Double {
-    val S1: Double = t1 * v1
-    val S2: Double = t2 * v2
-    val S3: Double = t3 * v3
-    val halfS = (S1 + S2 + S3) / 2
-    val answ: Double
-    answ = when {
-        halfS - S1 <= 0 -> halfS / v1
-        halfS - S2 - S1 <= 0 -> t1 + (halfS - S1) / v2
-        else -> t1 + t2 + (halfS - S1 - S2) / v3
+    val s1: Double = t1 * v1
+    val s2: Double = t2 * v2
+    val s3: Double = t3 * v3
+    val halfS = (s1 + s2 + s3) / 2
+    val ans: Double
+    ans = when {
+        halfS - s1 <= 0 -> halfS / v1
+        halfS - s2 - s1 <= 0 -> t1 + (halfS - s1) / v2
+        else -> t1 + t2 + (halfS - s1 - s2) / v3
     }
-    return answ
+    return ans
 }
 
 

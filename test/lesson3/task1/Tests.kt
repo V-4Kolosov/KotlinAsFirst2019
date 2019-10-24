@@ -205,6 +205,7 @@ class Tests {
         assertEquals(123456789, revert(987654321))
     }
 
+
     @Test
     @Tag("Normal")
     fun isPalindrome() {

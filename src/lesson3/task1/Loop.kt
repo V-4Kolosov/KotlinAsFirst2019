@@ -2,8 +2,8 @@
 
 package lesson3.task1
 
-import kotlin.math.sqrt
 import kotlin.math.pow
+import kotlin.math.sqrt
 
 
 /**
@@ -188,8 +188,17 @@ fun isCoPrime(m: Int, n: Int): Boolean {
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean
-
+fun squareBetweenExists(m: Int, n: Int): Boolean {
+    val m1 = sqrt(m.toDouble()).toInt()
+    val n1 = sqrt(n.toDouble()).toInt()
+    var ans: Boolean = false
+    if (m == n) {
+        ans = true
+    } else if (n1 - m1 >= 1){
+        ans = true
+    }
+    return ans
+}
 
 /**
  * Средняя
@@ -252,15 +261,14 @@ fun cos(x: Double, eps: Double): Double = TODO()
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun revert(n: Int): Int {
-    var i: Int = 0
     var n1 = n
-    while (n > 0) {
+    var n2 = 0
+    while (n1 > 0) {
+        n2 *= 10
+        n2 += n1 % 10
         n1 /= 10
-        i++
     }
-    while (i > 0) {
-        n / 10.pow(i)
-    }
+    return n2
 }
 
 /**
@@ -273,7 +281,17 @@ fun revert(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun isPalindrome(n: Int): Boolean {
-
+    var n1 = n
+    var n2 = 0
+    var ans: Boolean = false
+    while (n1 != 0) {
+        n2 = n2 * 10 + n1 % 10
+        n1 /= 10
+    }
+    if (n == n2) {
+        ans = true
+    }
+    return ans
 }
 
 /**
@@ -284,7 +302,16 @@ fun isPalindrome(n: Int): Boolean {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var n1 = n
+    while (n1 > 9) {
+        if (n1 % 10 == (n1 % 100) / 10)
+            n1 /= 10
+        else return true
+    }
+    return (n1 != n % 10)
+}
+
 
 /**
  * Сложная
@@ -295,7 +322,26 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var i = 0
+    var n1 = 0
+    var s: Int = 0
+    var f = n1 - n
+    while (n1 < n) {
+        i++
+        n1 += digitNumber(i * i)
+    }
+    while (f > 0) {
+        s = 10 * 10
+        f--
+    }
+    return if (n1 == n) {
+        i * i % 10
+    } else {
+        (i * i) / (s % 10)
+    }
+}
+
 
 /**
  * Сложная
